@@ -4,10 +4,11 @@ This repository contains tests for the
 [MathML in HTML5 implementation note](http://www.mathml-association.org/MathMLinHTML5/).
 We follow the formats and conventions of
 [W3C's Test the Web Forward Project](http://testthewebforward.org/),
-please read their documentation for details. The main goals are to help
-implementers to verify conformance with the technical description given in the
-MathML in HTML5 note and to provide a set of automatable tests to integrate into
-the testing framework of web browser developers.
+please read their documentation for details. The main goals are:
+- helping implementers to verify conformance with the technical description
+  given in the MathML in HTML5 note.
+- provide a set of automatable tests to integrate into the testing framework of
+  web browser developers.
 
 ## Installation
 
@@ -25,6 +26,8 @@ submodules with these additional steps:
 To verify the tests in your browser, you also need a local server whose root
 points to the root of the cloned repo.
 
-Many of the tests rely on specific OpenType features. Web fonts are generated
-using the Python API of [fontforge](https://github.com/fontforge/fontforge/)
-and the [sfnt2woff](https://people.mozilla.org/~jkew/woff/) tool.
+Many of the tests verify OpenType features and require specific Web fonts for
+that purpose. WOFF fonts are generated using the Python API of
+[fontforge](https://github.com/fontforge/fontforge/). A recent enough version
+of FontForge is necessary so that it includes fixes for [WOFF checkSumAdjustment](https://github.com/fontforge/fontforge/issues/926), [USE_TYPO_METRICS flag](https://github.com/fontforge/fontforge/pull/2274) and various OpenType MATH
+features.
