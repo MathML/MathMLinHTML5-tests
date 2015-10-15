@@ -3,6 +3,7 @@
 import fontforge
 
 font = fontforge.font()
+font.em = 1000
 typoLineHeight = 2300
 winHeight = 5000
 name = "font-lineheight%d-typolineheight%d" % (winHeight, typoLineHeight)
@@ -41,5 +42,5 @@ font.os2_windescent_add = False
 
 font.os2_use_typo_metrics = True
 
-font.generate("../fonts/lineheight%d-typolineheight%d.woff" %
+font.generate("../../fonts/lineheight%d-typolineheight%d.woff" %
               (winHeight, typoLineHeight))
