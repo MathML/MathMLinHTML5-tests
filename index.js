@@ -15,9 +15,11 @@ function fetchManifest()
 
 function displayTestList(aManifest)
 {
-    var htmlList = document.getElementById("output");
+    var i, htmlList;
+
     var reftestList = aManifest.items.reftest;
-    for (var i = 0; i < reftestList.length; i++) {
+    htmlList = document.getElementById("reftestList");
+    for (i = 0; i < reftestList.length; i++) {
         var reftest = reftestList[i];
         var item = "<li>";
         item += "<a href=\"" + reftest.url + "\">" + reftest.url + "</a>";
@@ -26,7 +28,18 @@ function displayTestList(aManifest)
         item += "</li>";
         htmlList.insertAdjacentHTML("beforeend", item);
     }
-    // FIXME: consider testharness and manual tests too.
+
+    var testharnessList = aManifest.items.testharness;
+    htmlList = document.getElementById("testharnessList");
+    for (i = 0; i < testharnessList.length; i++) {
+        var test = testharnessList[i];
+        var item = "<li>";
+        item += "<a href=\"" + test.url + "\">" + test.url + "</a>";
+        item += "</li>";
+        htmlList.insertAdjacentHTML("beforeend", item);
+    }
+
+    // FIXME: consider manual tests too.
 }
 
 function displayReftestList(aHTMLList, aReftestList)
