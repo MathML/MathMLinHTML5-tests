@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>XML entities</title>
+<link rel="help" href="http://www.mathml-association.org/MathMLinHTML5/S2.html#SS1">
+<meta name="assert" content="Verify whether the entity definitions from the HTML MathML entity set are recognized.">
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script>
+  var test = async_test("XML Entities");
+  var httpRequest = new XMLHttpRequest();
+  httpRequest.onreadystatechange = function() {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+       if (httpRequest.status === 200) {
+         var data = JSON.parse(httpRequest.responseText);
+         var span = document.createElement("span");
+         for (var entity in data.characters) {
+           var entityReference = "&" + entity + ";";
+           span.innerHTML = entityReference;
+           test.step(function() {
+             assert_equals(span.textContent, data.characters[entity],
+                           "Testing entity " + entityReference);
+           })
+         }
+         test.done();
+       }
+    }
+  };
+  httpRequest.open("GET", "./htmlmathml.json");
+  httpRequest.send();
+</script>
