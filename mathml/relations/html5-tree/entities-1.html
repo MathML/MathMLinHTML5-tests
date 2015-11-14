@@ -6,7 +6,7 @@
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script>
-  var test = async_test("XML Entities");
+  var test_load = async_test("Load htmlmathml.json");
   var httpRequest = new XMLHttpRequest();
   httpRequest.onreadystatechange = function() {
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -16,12 +16,11 @@
          for (var entity in data.characters) {
            var entityReference = "&" + entity + ";";
            span.innerHTML = entityReference;
-           test.step(function() {
-             assert_equals(span.textContent, data.characters[entity],
-                           "Testing entity " + entityReference);
-           })
+           test(function() {
+             assert_equals(span.textContent, data.characters[entity])
+           }, "Testing entity " + entityReference);
          }
-         test.done();
+         test_load.done();
        }
     }
   };
