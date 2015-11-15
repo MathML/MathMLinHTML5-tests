@@ -30,7 +30,7 @@ function displayTestList(aManifest)
     }
 
     var testharnessList = aManifest.items.testharness;
-    htmlList = document.getElementById("testharnessList");
+    htmlList = document.getElementById("scripttestList");
     for (i = 0; i < testharnessList.length; i++) {
         var test = testharnessList[i];
         var item = "<li>";
@@ -39,7 +39,15 @@ function displayTestList(aManifest)
         htmlList.insertAdjacentHTML("beforeend", item);
     }
 
-    // FIXME: consider manual tests too.
+    var manualtestList = aManifest.items.manual;
+    htmlList = document.getElementById("manualtestList");
+    for (i = 0; i < manualtestList.length; i++) {
+        var test = manualtestList[i];
+        var item = "<li>";
+        item += "<a href=\"" + test.url + "\">" + test.url + "</a>";
+        item += "</li>";
+        htmlList.insertAdjacentHTML("beforeend", item);
+    }
 }
 
 function displayReftestList(aHTMLList, aReftestList)

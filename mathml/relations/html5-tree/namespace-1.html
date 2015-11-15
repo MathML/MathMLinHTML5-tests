@@ -14,16 +14,16 @@
     "MathML": "http://www.w3.org/1998/Math/MathML"
   };
   for (var c in namespaces) {
-    var test = async_test("Test elements in " + c + " namespace");
+    var test_namespace = async_test("Test elements in " + c + " namespace");
     window.addEventListener("DOMContentLoaded", function() {
       var el = document.getElementsByClassName(c);
       for (var i = 0; i < el.length; i++) {
-        test.step(function() {
+        test_namespace.step(function() {
           assert_equals(el[i].namespaceURI, namespaces[c]);
         });
       }
     });
-    test.done();
+    test_namespace.done();
   }
 </script>
 </head>
