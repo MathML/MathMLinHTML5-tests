@@ -42,5 +42,5 @@ font.os2_windescent_add = False
 
 font.os2_use_typo_metrics = True
 
-font.generate("../../fonts/lineheight%d-typolineheight%d.woff" %
+font.generate("../../fonts/math/lineheight%d-typolineheight%d.woff" %
               (winHeight, typoLineHeight))
