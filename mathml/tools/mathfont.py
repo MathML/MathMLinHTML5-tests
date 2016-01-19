@@ -28,6 +28,19 @@ def create(aName):
     mathFont[ord(" ")].verticalVariants = "space"
     return mathFont
 
+def drawRectangleGlyph(aGlyph, aWidth, aAscent, aDescent):
+    aGlyph.width = aWidth
+    p = aGlyph.glyphPen()
+    p.moveTo(0, -aDescent)
+    p.lineTo(aWidth, -aDescent)
+    p.lineTo(aWidth, aAscent)
+    p.lineTo(0, aAscent)
+    p.closePath();
+
+def createSquareGlyph(aFont, aCodePoint):
+    g = aFont.createChar(aCodePoint)
+    drawRectangleGlyph(g, em, em, 0)
+    
 def save(aFont):
     aFont.em = em
     aFont.ascent = aFont.descent = em/2
