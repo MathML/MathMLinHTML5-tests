@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import mathfont
+from utils import mathfont
 import fontforge
 
 v = 3 * mathfont.em

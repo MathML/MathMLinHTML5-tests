@@ -1,7 +1,6 @@
-#!/usr/bin/python
-
 from __future__ import print_function
 import fontforge
+from misc import MathMLAssociationCopyright
 
 em = 1000
 
@@ -11,7 +10,7 @@ def create(aName):
     mathFont.fontname = aName
     mathFont.familyname = aName
     mathFont.fullname = aName
-    mathFont.copyright = "Copyright (c) 2016 MathML Association"
+    mathFont.copyright = MathMLAssociationCopyright
     mathFont.encoding = "UnicodeFull"
 
     # Create a space character. Also force the creation of some MATH subtables
@@ -40,7 +39,27 @@ def drawRectangleGlyph(aGlyph, aWidth, aAscent, aDescent):
 def createSquareGlyph(aFont, aCodePoint):
     g = aFont.createChar(aCodePoint)
     drawRectangleGlyph(g, em, em, 0)
-    
+
+def createGlyphFromValue(aFont, aCodePoint, aWidth, aValue, aNumberOfBits):
+    g = aFont.createChar(aCodePoint)
+    g.width = aWidth
+    rectangleWidth = g.width / aNumberOfBits
+    p = g.glyphPen()
+    for i in range(0, aNumberOfBits):
+        x = i * rectangleWidth
+        if aValue % 2:
+            y = em / 2
+        else:
+            y = -em / 2
+        p.moveTo(x, 0)
+        p.lineTo(x, y)
+        p.lineTo(x + rectangleWidth, y)
+        p.lineTo(x + rectangleWidth, 0)
+        p.closePath();
+        aValue /= 2
+
+    assert aValue == 0, "Not enough bits to encode that value!"
+
 def save(aFont):
     aFont.em = em
     aFont.ascent = aFont.descent = em/2

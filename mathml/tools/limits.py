@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import mathfont
+from utils import mathfont
 import fontforge
 
 nArySumCodePoint = 0x2211
