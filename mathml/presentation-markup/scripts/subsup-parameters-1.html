@@ -63,7 +63,7 @@
   var test_loaded = async_test("Page Loaded");
   window.addEventListener("load", function() {
     if (document.fonts)
-      document.fonts.ready.then(runTests());
+      document.fonts.ready.then(runTests);
     else
       window.setTimeout(runTests, 250);
   });
