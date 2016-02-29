@@ -50,8 +50,10 @@
 
   var test_loaded = async_test("Page Loaded");
   window.addEventListener("load", function() {
-    // FIXME: Use an API to wait for the Web fonts to arrive.
-    window.setTimeout(runTests, 250);
+    if (document.fonts)
+      document.fonts.ready.then(runTests());
+    else
+      window.setTimeout(runTests, 250);
   });
 
   function runTests() {
