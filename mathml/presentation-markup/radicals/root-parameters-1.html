@@ -48,12 +48,9 @@
     return document.getElementById(aId).getBoundingClientRect();
   }
 
-  var test_loaded = async_test("Page Loaded");
+  setup({ explicit_done: true });
   window.addEventListener("load", function() {
-    if (document.fonts)
-      document.fonts.ready.then(runTests);
-    else
-      window.setTimeout(runTests, 250);
+    document.fonts.ready.then(runTests);
   });
 
   function runTests() {
@@ -126,7 +123,7 @@
                            "msqrt: vertical gap");
     }, "RadicalVerticalGap");
 
-    test_loaded.done();
+    done();
   }
 </script>
 </head>

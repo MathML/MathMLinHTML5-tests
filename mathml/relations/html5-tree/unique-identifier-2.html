@@ -8,13 +8,13 @@
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script>
-  var test_id = async_test("Test getElementById()");
+  setup({ explicit_done: true });
   window.addEventListener("DOMContentLoaded", function() {
     var mtext = document.getElementById("MTEXT");
-    test_id.step(function() {
+    test(function() {
       assert_equals(mtext, document.body.firstElementChild.lastElementChild);
-    });
-    test_id.done();
+    }, "getElementById()");
+    done();
   });
 </script>
 </head>

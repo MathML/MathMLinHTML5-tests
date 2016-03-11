@@ -8,10 +8,10 @@
 <script src="/resources/testharness.js"></script>
 <script src="/resources/testharnessreport.js"></script>
 <script>
-  var test_id = async_test("Test getElementsByClassName()");
+  setup({ explicit_done: true });
   window.addEventListener("DOMContentLoaded", function() {
     var mtext = document.getElementsByClassName("cl");
-    test_id.step(function() {
+    test(function() {
       assert_equals(mtext.length, 3);
       var mtext_ref = document.body.firstElementChild.firstElementChild;
       mtext_ref = mtext_ref.nextElementSibling.nextElementSibling
@@ -20,8 +20,8 @@
       assert_equals(mtext[1], mtext_ref);
       mtext_ref = mtext_ref.nextElementSibling.nextElementSibling;
       assert_equals(mtext[2], mtext_ref);
-    });
-    test_id.done();
+    }, "getElementsByClassName()");
+    done();
   });
 </script>
 </head>
