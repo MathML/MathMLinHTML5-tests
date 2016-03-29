@@ -12,7 +12,14 @@
   }
   body > span:nth-child(2n) { color: green; }
   body > span:nth-child(2n+1) { color: blue; }
-  mi {
+  span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 1px;
+    background: #faa;
+  }
+  math {
     font-family: TestFont;
     /* The assertion in mathvariant-transform.py ensures that
        rectangleWidth > 100 * 10 / 1000 = 1px. */

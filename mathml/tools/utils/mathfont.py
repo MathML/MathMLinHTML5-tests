@@ -47,14 +47,9 @@ def createGlyphFromValue(aFont, aCodePoint, aWidth, aValue, aNumberOfBits):
     p = g.glyphPen()
     for i in range(0, aNumberOfBits):
         x = i * rectangleWidth
-        if i % 2:
-            y1 = em / 4
-            y2 = em / 2
-        else:
-            y1 = 3 * em / 4
-            y2 = em
-        if aValue % 2:
-            y1, y2 = -y2, -y1
+        y1 = (i % 2) * em / 2
+        y1 += (aValue % 2) * em / 4
+        y2 = y1 + em / 8
         p.moveTo(x, y1)
         p.lineTo(x, y2)
         p.lineTo(x + rectangleWidth, y2)
@@ -66,9 +61,8 @@ def createGlyphFromValue(aFont, aCodePoint, aWidth, aValue, aNumberOfBits):
 
 def save(aFont):
     aFont.em = em
-    aFont.ascent = aFont.descent = em/2
-    aFont.hhea_ascent = aFont.hhea_descent = em/2
-    aFont.os2_typoascent = aFont.os2_typodescent = em/2
+    aFont.ascent = aFont.hhea_ascent = aFont.os2_typoascent = em
+    aFont.descent = aFont.hhea_descent = aFont.os2_typodescent = 0
     # aFont.os2_winascent, aFont.os2_windescent should be the maximum of
     # ascent/descent for all glyphs. Does fontforge compute them automatically?
     aFont.hhea_ascent_add = aFont.hhea_descent_add = 0

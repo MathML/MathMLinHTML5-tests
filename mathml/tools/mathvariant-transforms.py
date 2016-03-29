@@ -78,8 +78,7 @@ for mathvariant in mathvariantTransforms:
     for baseChar in mathvariantTransforms[mathvariant]:
         if baseChar not in font:
             g = font.createChar(baseChar)
-            mathfont.drawRectangleGlyph(g, glyphWidth,
-                                        mathfont.em/2, mathfont.em/2)
+            mathfont.drawRectangleGlyph(g, glyphWidth, mathfont.em, 0)
         transformedChar = mathvariantTransforms[mathvariant][baseChar]
         mathfont.createGlyphFromValue(font,
                                       transformedChar,
