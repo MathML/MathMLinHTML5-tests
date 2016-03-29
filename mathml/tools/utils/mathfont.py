@@ -31,9 +31,9 @@ def drawRectangleGlyph(aGlyph, aWidth, aAscent, aDescent):
     aGlyph.width = aWidth
     p = aGlyph.glyphPen()
     p.moveTo(0, -aDescent)
-    p.lineTo(aWidth, -aDescent)
-    p.lineTo(aWidth, aAscent)
     p.lineTo(0, aAscent)
+    p.lineTo(aWidth, aAscent)
+    p.lineTo(aWidth, -aDescent)
     p.closePath();
 
 def createSquareGlyph(aFont, aCodePoint):
@@ -47,14 +47,18 @@ def createGlyphFromValue(aFont, aCodePoint, aWidth, aValue, aNumberOfBits):
     p = g.glyphPen()
     for i in range(0, aNumberOfBits):
         x = i * rectangleWidth
-        if aValue % 2:
-            y = em / 2
+        if i % 2:
+            y1 = em / 4
+            y2 = em / 2
         else:
-            y = -em / 2
-        p.moveTo(x, 0)
-        p.lineTo(x, y)
-        p.lineTo(x + rectangleWidth, y)
-        p.lineTo(x + rectangleWidth, 0)
+            y1 = 3 * em / 4
+            y2 = em
+        if aValue % 2:
+            y1, y2 = -y2, -y1
+        p.moveTo(x, y1)
+        p.lineTo(x, y2)
+        p.lineTo(x + rectangleWidth, y2)
+        p.lineTo(x + rectangleWidth, y1)
         p.closePath();
         aValue /= 2
 
@@ -72,4 +76,8 @@ def save(aFont):
     aFont.os2_winascent_add = aFont.os2_windescent_add = 0
     aFont.os2_use_typo_metrics = True
     aFont.generate("../../fonts/math/%s.woff" % aFont.fontname)
-    print(" done.")
+    if aFont.validate() == 0:
+        print(" done.")
+    else:
+        print(" validation error!")
+        exit(1)

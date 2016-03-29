@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+from __future__ import print_function
 from utils.misc import MathMLAssociationCopyright
 import fontforge
 
@@ -18,9 +19,9 @@ glyph.width = 1000
 glyph = font.createChar(ord("O"))
 pen = glyph.glyphPen()
 pen.moveTo(0, -200)
-pen.lineTo(1000, -200)
-pen.lineTo(1000, 800)
 pen.lineTo(0, 800)
+pen.lineTo(1000, 800)
+pen.lineTo(1000, -200)
 pen.closePath();
 
 font.os2_typoascent_add = False
@@ -43,5 +44,10 @@ font.os2_windescent_add = False
 
 font.os2_use_typo_metrics = True
 
-font.generate("../../fonts/math/lineheight%d-typolineheight%d.woff" %
-              (winHeight, typoLineHeight))
+path = "../../fonts/math/lineheight%d-typolineheight%d.woff" % (winHeight, typoLineHeight)
+print("Generating %s..." % path, end="")
+if font.validate() == 0:
+    print(" done.")
+else:
+    print(" validation error!")
+    exit(1)
