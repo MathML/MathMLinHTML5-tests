@@ -32,10 +32,17 @@
   function runTests() {
     test(function() {
       var v1 = 5000 * emToPx;
-      var moMiddle = (getBox("mo").bottom + getBox("mo").top) / 2;
-      assert_approx_equals(getBox("baseline").bottom - moMiddle,
+      var moMiddle = (getBox("mo1").bottom + getBox("mo1").top) / 2;
+      assert_approx_equals(getBox("baseline1").bottom - moMiddle,
                            v1, epsilon, "mo: axis height");
-    }, "AxisHeight");
+    }, "AxisHeight (size variant)");
+
+    test(function() {
+      var v1 = 5000 * emToPx;
+      var moMiddle = (getBox("mo2").bottom + getBox("mo2").top) / 2;
+      assert_approx_equals(getBox("baseline2").bottom - moMiddle,
+                           v1, epsilon, "mo: axis height");
+    }, "AxisHeight (glyph assembly)");
 
     done();
   }
@@ -45,9 +52,18 @@
   <p>
     <math style="font-family: axisheight5000-verticalarrow14000;">
       <mrow>
-        <mspace id="baseline" mathbackground="blue" width="100px" height="1px"/>
-        <mo id="mo" symmetric="true" mathcolor="green">&#x21A8;</mo>
-        <mspace mathbackground="black" width="10px" height="50px"/>
+        <mspace id="baseline1" mathbackground="blue" width="50px" height="1px"/>
+        <mpadded voffset="50px"><mspace mathbackground="cyan" width="50px" height="1px"/></mpadded>
+        <mo id="mo1" symmetric="true" mathcolor="green">&#x21A8;</mo>
+        <mspace mathbackground="gray" width="10px" height="50px"/>
+      </mrow>
+    </math>
+    <math style="font-family: axisheight5000-verticalarrow14000;">
+      <mrow>
+        <mspace id="baseline2" mathbackground="blue" width="50px" height="1px"/>
+        <mpadded voffset="50px"><mspace mathbackground="cyan" width="50px" height="1px"/></mpadded>
+        <mo id="mo2" symmetric="true" mathcolor="green">&#x21A8;</mo>
+        <mspace mathbackground="gray" width="10px" height="200px"/>
       </mrow>
     </math>
   </p>
