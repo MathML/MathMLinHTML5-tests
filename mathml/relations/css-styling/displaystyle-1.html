@@ -31,7 +31,7 @@
       assert_approx_equals(elementSize, 1000 * emToPx, epsilon, description);
   }
 
-  window.addEventListener("DOMContentLoaded", function() {
+  window.addEventListener("load", function() {
     document.fonts.ready.then(runTests);
   });
 
