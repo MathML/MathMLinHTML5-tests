@@ -61,7 +61,7 @@
   }
 
   setup({ explicit_done: true });
-  window.addEventListener("load", function() {
+  window.addEventListener("DOMContentLoaded", function() {
     document.fonts.ready.then(runTests);
   });
 
