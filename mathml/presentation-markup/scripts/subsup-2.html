@@ -105,6 +105,16 @@
       assert_approx_equals(getBox("premsubsup").height, Math.max(getBox("premsubSub").bottom, getBox("premsubBase").bottom) - Math.min(getBox("premsupSup").top, getBox("premsupBase").top), e, "msubsup height is determined by the top/bottom sides of base/scripts");
     }, "Height of scripted elements");
 
+    test(function() {
+      ["none", "mprescripts"].forEach(function(name) {
+        var elements = document.getElementsByTagName(name);
+        for (var i = 0; i < elements.length; i++) {
+          var box = elements[i].getBoundingClientRect();
+          assert_equals(box.height * box.width, 0, "<" + name + "> " + i + " has zero is empty");
+        }
+      });
+    }, "Size of empty elements");
+
     done();
   }
 </script>
