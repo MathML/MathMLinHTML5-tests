@@ -30,7 +30,7 @@ Next, generate the MANIFEST.json file with the following command:
 
 To verify the tests in your browser, you also need to setup a web server whose
 root points to the root of the cloned repo. For a quick setup, you can just run
-the `serve.py` Python script at the root:
+the `server.py` Python script at the root:
 
     $ python server.py
 
