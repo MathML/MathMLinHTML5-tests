@@ -35,7 +35,10 @@
     test(function() {
       var e = 3;
       var mathAxis = getBox("axis").middle;
-      for (var i = 0; i < 10; i++) {
+      // For stacks, nothing in the OpenType MATH specification seems to ensure
+      // that the gap is split symmetrically around the math axis so we only
+      // do the following verification for standard fractions.
+      for (var i = 0; i <= 4; i++) {
         var frac = getBox("frac" + i);
         var num = getBox("frac" + i + "num");
         var den = getBox("frac" + i + "den");
