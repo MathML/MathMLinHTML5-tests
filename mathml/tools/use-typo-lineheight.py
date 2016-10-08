@@ -33,7 +33,7 @@ font.os2_typolinegap = typoLineHeight - \
 
 font.hhea_ascent = winHeight / 2
 font.hhea_ascent_add = False
-font.hhea_descent = winHeight / 2
+font.hhea_descent = -winHeight / 2
 font.hhea_descent_add = False
 font.hhea_linegap = 0
 
@@ -46,6 +46,7 @@ font.os2_use_typo_metrics = True
 
 path = "../../fonts/math/lineheight%d-typolineheight%d.woff" % (winHeight, typoLineHeight)
 print("Generating %s..." % path, end="")
+font.generate(path)
 if font.validate() == 0:
     print(" done.")
 else:
