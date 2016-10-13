@@ -37,11 +37,3 @@ the `server.py` Python script at the root:
 Finally, open `index.html` at the web server root to get an overview of all the
 tests. Using W3C's wptserve has not been tried but the tests can easily be
 imported into other automated testing framework anyway.
-
-## Note on Web fonts
-
-Many of the tests verify OpenType features and require specific Web fonts for
-that purpose. WOFF fonts are generated using the Python API of
-[fontforge](https://github.com/fontforge/fontforge/). A recent enough version
-of FontForge is necessary so that it includes fixes for [WOFF checkSumAdjustment](https://github.com/fontforge/fontforge/issues/926), [USE_TYPO_METRICS flag](https://github.com/fontforge/fontforge/pull/2274) and various bugs in OpenType
-MATH.
