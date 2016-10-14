@@ -95,7 +95,7 @@
       assert_greater_than_equal(getBox("premsub").height, getBox("premsubBase").height, e, "height is at least the one of the base");
       assert_greater_than_equal(getBox("premsup").height, getBox("premsupBase").height, e, "height is at least the one of the base");
   assert_greater_than_equal(getBox("premsubsup").height, getBox("premsubsupBase").height, e, "height is at least the one of the base");
-  
+
       e = 3;
       assert_approx_equals(getBox("msub").height, Math.max(getBox("msubSub").bottom, getBox("msubBase").bottom) - getBox("msubBase").top, e, "msub height is determined by the top/bottom sides of base/scripts");
       assert_approx_equals(getBox("msup").height, getBox("msupBase").bottom - Math.min(getBox("msupSup").top, getBox("msupBase").top), e, "msup height is determined by the top/bottom sides of base/scripts");
