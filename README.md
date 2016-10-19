@@ -1,5 +1,7 @@
 # Tests for the MathML in HTML5 implementation note
 
+**This repository moved to [w3c/web-platform-tests/web-platform-tests/mathml](https://github.com/w3c/web-platform-tests/tree/master/mathml).**
+
 This repository contains tests for the
 [MathML in HTML5 implementation note](http://www.mathml-association.org/MathMLinHTML5/).
 We follow the formats and conventions of
