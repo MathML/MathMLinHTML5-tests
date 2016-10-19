@@ -94,8 +94,6 @@ for mathvariant in mathvariantTransforms:
   body > span {\n\
     padding: 10px;\n\
   }\n\
-  body > span:nth-child(2n) { color: green; }\n\
-  body > span:nth-child(2n+1) { color: blue; }\n\
   span > span {\n\
     font-family: monospace;\n\
     font-size: 10px;\n\
